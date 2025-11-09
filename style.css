@@ -1,0 +1,165 @@
+/* Variables CSS para Coherencia de Colores y Modo Dark */
+:root {
+    --primary-color: #007bff; /* Azul de Bootstrap */
+    --bg-light: #f8f9fa; /* Fondo claro */
+    --text-light: #212529; /* Texto oscuro en modo claro */
+    --bg-dark: #343a40; /* Fondo oscuro */
+    --text-dark: #f8f9fa; /* Texto claro en modo oscuro */
+    --transition-speed: 0.3s;
+}
+
+/* Base Body Styles */
+body {
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Modo Dark Styles (Overrides) */
+body.dark {
+    /* Sobrescribir variables para el modo oscuro */
+    --bg-light: #343a40; /* El fondo claro ahora es el oscuro */
+    --text-light: #f8f9fa; /* El texto claro ahora es el claro */
+    
+    background-color: var(--bg-dark); /* Asegura el fondo principal */
+    color: var(--text-dark); /* Asegura el texto principal */
+}
+
+/* Overrides Específicos para Bootstrap en Modo Dark */
+
+body.dark .bg-light { 
+    background: var(--bg-dark) !important; /* Fondo de secciones claras */
+}
+
+body.dark .card,
+body.dark .form-custom { 
+    background-color: var(--bg-dark); 
+    color: var(--text-dark); 
+    border-color: var(--primary-color) !important; 
+}
+
+body.dark .navbar { 
+    background: var(--bg-dark) !important; 
+    border-bottom: 1px solid var(--primary-color);
+}
+
+body.dark .navbar-brand, 
+body.dark .nav-link { 
+    color: var(--text-dark) !important; /* Texto de la navbar */
+}
+
+body.dark .navbar-toggler-icon {
+    filter: invert(1); /* Para que el ícono sea visible */
+}
+
+body.dark i,
+body.dark .text-primary { 
+    color: var(--text-dark) !important; /* Iconos y texto primario se vuelven claros */
+}
+
+body.dark .text-muted {
+    color: rgba(248, 249, 250, 0.7) !important; /* Texto atenuado claro */
+}
+
+body.dark .text-dark { 
+    color: var(--text-light) !important; /* El texto que era dark ahora es light */
+}
+
+body.dark .social-icon-dark i.fa-github {
+    color: var(--text-light) !important; /* GitHub específicamente */
+}
+
+/* Estilo del Botón de Modo Oscuro */
+#darkModeToggle {
+    transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+}
+body.dark #darkModeToggle {
+    border-color: var(--text-dark) !important;
+    color: var(--text-dark) !important;
+}
+
+
+/* --- Homepage Hero Section --- */
+.hero-gradient {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientShift 15s infinite ease-in-out;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.profile-image {
+    border: 5px solid white;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Animación Título - fadeIn/Up */
+.animated-title {
+    animation: fadeInUp 1.5s ease-out forwards;
+    opacity: 0;
+    margin-top: 20px; /* Para el inicio de la animación */
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+/* --- Proyectos Cards --- */
+.project-card, .experience-card {
+    border: 2px solid var(--primary-color) !important;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.project-card {
+    animation: heartbeat 3s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Accesibilidad: Focus Outlines */
+a:focus, button:focus, input:focus, textarea:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .profile-image {
+        width: 150px;
+        height: 150px;
+    }
+    .display-1 {
+        font-size: 3rem;
+    }
+    .display-4 {
+        font-size: 2rem;
+    }
+    .lead {
+        font-size: 1rem;
+    }
+}
